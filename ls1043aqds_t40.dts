@@ -45,7 +45,7 @@
 		    gpio-controller;
 		    #gpio-cells = <2>;
 		    registers-number = <8>;
-		    spi-max-frequency = <100000>;
+		    spi-max-frequency = <1000000>;
 		};
 	};
 	
@@ -73,6 +73,10 @@
 			default-state = "off";
 		};
 	};
+};
+
+&soc {
+	/delete-property/ dma-coherent;
 };
 
 &duart0 {
@@ -194,15 +198,14 @@
 
 &usb0 {
 	status = "okay";
+	/delete-property/ dma-coherent;
 };
 
 &usb1 {
 	status = "okay";
+	/delete-property/ dma-coherent;
 };
 
-&usb2 {
-	status = "okay";
-};
 
 &sata {
 	status = "okay";
