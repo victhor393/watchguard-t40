@@ -24,6 +24,11 @@
 		spi0 = &qspi;
 		spi1 = &dspi0;
 		rtc0 = &rtc_i2c;
+		ethernet0 = &enet2;
+		ethernet1 = &enet0;
+		ethernet2 = &enet1;
+		ethernet3 = &enet4;
+		ethernet4 = &enet5;
 	};
 
 	chosen {
@@ -212,33 +217,33 @@
 };
 
 #include "fsl-ls1043-post.dtsi"
-//#include <dt-bindings/net/qca-ar803x.h>
+
+&enet0 {
+	phy-handle = <&qsgmii_phy1>;
+	phy-connection-type = "qsgmii";
+};
+
+&enet1 {
+	phy-handle = <&qsgmii_phy2>;
+	phy-connection-type = "qsgmii";
+};
+
+&enet2 {
+	phy-handle = <&rgmii_phy1>;
+	phy-connection-type = "rgmii-id";
+};
+
+&enet4 {
+	phy-handle = <&qsgmii_phy3>;
+	phy-connection-type = "qsgmii";
+};
+
+&enet5 {
+	phy-handle = <&qsgmii_phy4>;
+	phy-connection-type = "qsgmii";
+};
 
 &fman0 {
-	ethernet@e0000 {
-		phy-handle = <&qsgmii_phy1>;
-		phy-connection-type = "qsgmii";
-	};
-
-	ethernet@e2000 {
-		phy-handle = <&qsgmii_phy2>;
-		phy-connection-type = "qsgmii";
-	};
-
-	ethernet@e4000 {
-		phy-handle = <&rgmii_phy1>;
-		phy-connection-type = "rgmii-id";
-	};
-
-	ethernet@e8000 {
-		phy-handle = <&qsgmii_phy3>;
-		phy-connection-type = "qsgmii";
-	};
-
-	ethernet@ea000 {
-		phy-handle = <&qsgmii_phy4>;
-		phy-connection-type = "qsgmii";
-	};
 
 	mdio@fc000 {
 		qsgmii_phy1: ethernet-phy@4 {
@@ -261,7 +266,6 @@
 	mdio@fd000 {
 		rgmii_phy1: ethernet-phy@1 {
 			reg = <0x1>;
-			//qca,disable-smarteee;
 		};
 	};
 
