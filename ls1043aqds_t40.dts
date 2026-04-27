@@ -49,7 +49,7 @@
 		    reg = <0>;
 		    gpio-controller;
 		    #gpio-cells = <2>;
-		    registers-number = <8>;
+		    registers-number = <1>;
 		    spi-max-frequency = <1000>;
 		};
 	};
