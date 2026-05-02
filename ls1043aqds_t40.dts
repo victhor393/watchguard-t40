@@ -78,7 +78,15 @@
 			default-state = "off";
 		};
 	};
-};
+	
+	gpio-keys {
+		compatible = "gpio-keys";
+
+		reset {
+			label = "Reset Button";
+			gpios = <&gpio4 12 1>;
+		};
+	};
 
 &soc {
 	/delete-property/ dma-coherent;
@@ -247,24 +255,29 @@
 
 	mdio@fc000 {
 		qsgmii_phy1: ethernet-phy@4 {
+			reset-gpios = <&gpio2 11 1>;
 			reg = <0x4>;
 		};
 
 		qsgmii_phy2: ethernet-phy@5 {
+			reset-gpios = <&gpio2 11 1>;
 			reg = <0x5>;
 		};
 
 		qsgmii_phy3: ethernet-phy@6 {
+			reset-gpios = <&gpio2 11 1>;
 			reg = <0x6>;
 		};
 
 		qsgmii_phy4: ethernet-phy@7 {
+			reset-gpios = <&gpio2 11 1>;
 			reg = <0x7>;
 		};
 	};
 	
 	mdio@fd000 {
 		rgmii_phy1: ethernet-phy@1 {
+			reset-gpios = <&gpio2 12 1>;
 			reg = <0x1>;
 		};
 	};
